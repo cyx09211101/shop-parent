@@ -1,0 +1,16 @@
+server:
+  port: 8081
+spring:
+  application:
+   name: product-service
+  datasource:
+   driver-class-name: com.mysql.cj.jdbc.Driver
+   url: jdbc:mysql:///shop-product?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+   username: root
+   password: yuxun
+  jpa:
+    properties:
+     hibernate:
+       hbm2ddl:
+        auto: update
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
