@@ -1,10 +1,18 @@
 server:
   port: 8091
+  tomcat:
+    threads:
+     max: 5 #tomcat的最⼤并发值修改为10,
 spring:
   cloud:
    nacos:
     discovery:
      server-addr: localhost:8848
+   sentinel:
+     web-context-unify: false
+     transport:
+       port: 9999 #跟控制台交流的端口,随意指定一个未使用的端口即可
+       dashboard: localhost:8080 # 指定控制台服务的地址
   application:
     name: order-service
   datasource:
@@ -18,3 +26,6 @@ spring:
         hbm2ddl:
           auto: update
           dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+product-service: # 调用的提供者的名称
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
